@@ -1,41 +1,91 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function ChevroletModels() {
+export default function ChevyModels() {
   const router = useRouter();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Chevrolet Models</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      
+      {/* Page Title */}
+      <Text style={styles.title}>Select Chevy Model</Text>
 
+      {/* Models Grid */}
+      <View style={styles.grid}>
+
+        {/* Camaro */}
+        <TouchableOpacity style={styles.logoBox}>
+          <Text style={styles.modelText}>Camaro</Text>
+        </TouchableOpacity>
+
+        {/* Corvette */}
+        <TouchableOpacity style={styles.logoBox}>
+          <Text style={styles.modelText}>Corvette</Text>
+        </TouchableOpacity>
+
+        {/* Cheverolet SS */}
+        <TouchableOpacity style={styles.logoBox}>
+          <Text style={styles.modelText}>Cherolet SS</Text>
+        </TouchableOpacity>
+
+      </View>
+
+      {/* Go Back */}
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
         <Text style={styles.backText}>Go Back</Text>
       </TouchableOpacity>
-    </View>
+
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
+    backgroundColor: '#d9d9d9',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff'
+    paddingVertical: 40,
   },
   title: {
-    fontSize: 30,
+    fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 20
+    backgroundColor: '#0033a0',
+    color: '#fff',
+    width: '100%',
+    textAlign: 'center',
+    paddingVertical: 15,
+    marginBottom: 30,
+  },
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    width: '100%',
+  },
+  logoBox: {
+    backgroundColor: '#6bb5e3ff',
+    padding: 10,
+    margin: 10,
+    borderRadius: 10,
+    width: 150,
+    height: 90,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modelText: {
+    fontSize: 18,
+    fontWeight: '700',
   },
   backButton: {
-    backgroundColor: '#0033a0',
-    paddingHorizontal: 20,
+    marginTop: 40,
+    backgroundColor: '#2f00ff',
     paddingVertical: 12,
-    borderRadius: 10
+    paddingHorizontal: 25,
+    borderRadius: 25,
   },
   backText: {
-    color: '#fff',
-    fontSize: 18
+    color: 'white',
+    fontSize: 16,
   },
 });
